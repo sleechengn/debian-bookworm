@@ -22,7 +22,7 @@ networks:
 services:
   debian-bookworm:
     container_name: "debian-bookworm"
-    hostname: "ubuntu"
+    hostname: "debian-bookworm"
     image: "sleechengn/debian:bookworm"
     restart: unless-stopped
     environment:
