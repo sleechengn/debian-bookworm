@@ -14,7 +14,7 @@ networks:
     name: lan13
     driver: macvlan
     driver_opts:
-      parent: eth1
+      parent: lan2
     ipam:
       config:
         - subnet: "192.168.13.0/24"
@@ -23,12 +23,14 @@ services:
   debian-bookworm:
     container_name: "debian-bookworm"
     hostname: "debian-bookworm"
-    image: "sleechengn/debian:bookworm"
+    build:
+      context: https://github.com/sleechengn/debian-bookworm
+      dockerfile: Dockerfile
     restart: unless-stopped
     environment:
       - ROOT_PASSWORD=123456
       - TZ=Asia/Shanghai
     networks:
       lan13:
-        ipv4_address: 192.168.13.63
+        ipv4_address: 192.168.13.64
 ```
